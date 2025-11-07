@@ -7,6 +7,8 @@ pipeline {
     }
 
     environment {
+        JAVA_HOME = "${tool 'jdk17'}"
+        PATH = "${env.JAVA_HOME}/bin:${env.PATH}"
         DOCKER_IMAGE = "devops-poc:v1"
     }
 
