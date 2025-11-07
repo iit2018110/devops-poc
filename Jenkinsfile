@@ -7,7 +7,7 @@ pipeline {
     }
 
     environment {
-        JAVA_HOME = "${tool 'jdk17'}"
+        JAVA_HOME = "/usr/lib/jvm/java-17-openjdk"
         PATH = "${env.JAVA_HOME}/bin:${env.PATH}"
         DOCKER_IMAGE = "devops-poc:v1"
     }
@@ -16,6 +16,12 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/iit2018110/devops-poc.git'
+            }
+        }
+
+        stage('Verify Java') {
+            steps {
+                sh 'java -version'
             }
         }
 
